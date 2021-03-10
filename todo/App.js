@@ -1,69 +1,106 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
   Text,
-  StatusBar,
+  StyleSheet
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// bringing all screens
+import Home from './screens/Home'
+import Add from './screens/Add'
+import Edit from './screens/Edit'
+
+const Stack = createStackNavigator();
+
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        
-      </SafeAreaView>
-    </>
+  
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen 
+          name="Home"
+          component={Home}
+          options={{
+            headerStyle:{
+              backgroundColor: "#0f4c75"
+            },
+            title: 'TODO App',
+            headerTitleStyle: {
+              textAlign: "center",
+              color:"#00b7c2"
+            }
+          }}
+          >
+
+          </Stack.Screen>
+          <Stack.Screen 
+          name="Add"
+          component={Add}
+          options={{
+            headerStyle:{
+              backgroundColor: "#0f4c75"
+            },
+            title: 'TODO App',
+            headerTitleStyle: {
+              textAlign: "center",
+              color:"#00b7c2"
+            }
+          }}
+          >
+
+          </Stack.Screen>
+          <Stack.Screen 
+          name="Edit"
+          component={Edit}
+          options={{
+            headerStyle:{
+              backgroundColor: "#0f4c75"
+            },
+            title: 'TODO App',
+            headerTitleStyle: {
+              textAlign: "center",
+              color:"#00b7c2"
+            }
+          }}
+          >
+
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+ 
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  emptyContainer: {
+    backgroundColor: '#1b262c',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  container: {
+    backgroundColor: '#1b262c',
+    flex: 1,
   },
-  body: {
-    backgroundColor: Colors.white,
+  heading: {
+    textAlign: 'center',
+    color: '#00b7c2',
+    marginVertical: 15,
+    marginHorizontal: 5,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  actionButton: {
+    marginLeft: 5,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  seasonName: {
+    color: '#fdcb9e',
+    textAlign: 'justify',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  listItem: {
+    marginLeft: 0,
+    marginBottom: 20,
   },
 });
 
