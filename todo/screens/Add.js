@@ -61,23 +61,23 @@ const App = ({navigation, route}) => {
                   Add TODO here
                 </H1>
 
-                <Form>
-                  <Item rounded style={styles.formItem}> 
+                <Form style={{padding:40}}>
+                  <Item style={styles.formItem}> 
                     <Input
                     value={name}
                     placeholder="Name of the task"
-                    style={{color:'white'}}
+                    style={{color:'black'}}
                     onChangeText={(text)=>{setName(text)}}
 
                     />
                      
                   </Item>
-                  <Item rounded style={styles.formItem}> 
+                  <Item style={styles.formItem}> 
                   <Input
                     value={descrption}
                     onChangeText={(text)=>{setDescrption(text)}}
                     placeholder="Description of the task"
-                    style={{color:'white'}}
+                    style={{color:'black'}}
                     />
                   </Item>
                     <Button rounded block 
@@ -94,13 +94,14 @@ const App = ({navigation, route}) => {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#1b262c',
+    backgroundColor: '#fff',
     flex: 1,
     justifyContent: 'flex-start',
+    
   },
   heading: {
     textAlign: 'center',
-    color: '#00b7c2',
+    color: '#000',
     marginHorizontal: 5,
     marginTop: 50,
     marginBottom: 20,

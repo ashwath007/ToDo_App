@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+const shortid = require('shortid');
 
 import {
   List,
@@ -25,10 +26,12 @@ import {useIsFocused} from '@react-navigation/native';
 
 
 import {
-    
+    Image,
     StyleSheet,
     ScrollView
 } from 'react-native';
+
+import ban from './src/todo_ban.png'
 
 const Home = ({navigation, route}) => {
 
@@ -36,7 +39,7 @@ const Home = ({navigation, route}) => {
 
 
 
-    const [todos,setTodos] = useState([])
+    const [todos,setTodos] = useState('')
     const [loading,setLoeading] = useState(false)
 
 
@@ -46,23 +49,40 @@ const Home = ({navigation, route}) => {
       //
       setLoeading(true)
       const stored = await AsyncStorage.getItem('@season_list');
-      
+    
       if(!stored){
+        // const addTodo = {
+        //   id:shortid.generate(),
+        //   name:'TODO name',
+        //   descrption:'TODO description',
+        //   isFinished:false
+        // }
+        // const newList = [addTodo]
+        // await AsyncStorage.setItem('@season_list',JSON.stringify(newList))
+        // const storedValue = await AsyncStorage.getItem('@season_list')
+        // setTodos(storedValue)
+        setTodos('')
 
-        setTodos([])
+        
       }
 
       const list = JSON.parse(stored)
       setTodos(list)
       setLoeading(false)
       
+      
     }
 
     const deleteTodo = async (id) => {
       //
       const newList = await todos.filter((list) => list.id !==id)
+      if(newList.length ==0 ){
+        await AsyncStorage.setItem('@season_list',JSON.stringify(''))
+      }
       await AsyncStorage.setItem('@season_list',JSON.stringify(newList))
+      
       setTodos(newList)
+      
     }
 
     const markComplete = async (id) => {
@@ -93,12 +113,10 @@ const Home = ({navigation, route}) => {
     
     return (
         <ScrollView contentContainerStyle={styles.container}>
-           {todos.length ==0 ? (
+           {!todos || todos.length ==0 ? (
              
-               <Container>
-                 <H1>
-                   Todos List is empty
-                 </H1>
+               <Container style={{justifyContent:'center',alignItems:'center'}}>
+                <Image style={styles.ban} source={ban}/>
                </Container>
              )
             : (
@@ -108,9 +126,8 @@ const Home = ({navigation, route}) => {
                 </H1>
                 <List>
                  {todos.map((todo)=>{
-                   {console.log('>>>>>>>>>>>>>>>>>>>',todos)}
                    return(
-                    <ListItem key={todo.id} style={styles.listItem} noBorder>
+                    <ListItem key={todo.id} style={styles.listItem}>
                     <Left>
     
                       <Button style={styles.actionButton} danger
@@ -125,7 +142,7 @@ const Home = ({navigation, route}) => {
                       </Button>
                     </Left>
                       <Body>
-                        <Title>
+                        <Title style={{color:'black'}}>
                          {todo.name}
                         </Title>
                         <Text note>
@@ -147,7 +164,7 @@ const Home = ({navigation, route}) => {
 
            }
 
-            <Fab style={{backgroundColor:'#5067FF'}}
+            <Fab style={{backgroundColor:'#E83A59'}}
                 position="bottomRight"
                 onPress={() => navigation.navigate('Add')}
             > 
@@ -158,23 +175,30 @@ const Home = ({navigation, route}) => {
 }
 const styles = StyleSheet.create({
     emptyContainer: {
-      backgroundColor: '#1b262c',
+      backgroundColor: '#fff',
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
     },
     container: {
-      backgroundColor: '#1b262c',
+      backgroundColor: '#fff',
       flex: 1,
+      
     },
     heading: {
       textAlign: 'center',
-      color: '#00b7c2',
+      color: '#000',
       marginVertical: 15,
       marginHorizontal: 5,
     },
     actionButton: {
       marginLeft: 5,
+    },
+    ban:{
+      flex: 1,
+      width: 250,
+    height: 250,
+      resizeMode: 'contain'
     },
     seasonName: {
       color: '#fdcb9e',
@@ -183,6 +207,8 @@ const styles = StyleSheet.create({
     listItem: {
       marginLeft: 0,
       marginBottom: 20,
+      
+      alignItems:'center'
     },
   });
 export default Home;

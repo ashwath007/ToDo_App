@@ -37,12 +37,12 @@ const App = () => {
           component={Home}
           options={{
             headerStyle:{
-              backgroundColor: "#0f4c75"
+              backgroundColor: "#E83A59"
             },
             title: 'TODO App',
             headerTitleStyle: {
               textAlign: "center",
-              color:"#00b7c2"
+              color:"#fff"
             }
           }}
           >
@@ -53,12 +53,12 @@ const App = () => {
           component={Add}
           options={{
             headerStyle:{
-              backgroundColor: "#0f4c75"
+              backgroundColor: "#E83A59"
             },
             title: 'TODO App',
             headerTitleStyle: {
               textAlign: "center",
-              color:"#00b7c2"
+              color:"#fff"
             }
           }}
           >
@@ -69,12 +69,12 @@ const App = () => {
           component={Edit}
           options={{
             headerStyle:{
-              backgroundColor: "#0f4c75"
+              backgroundColor: "#E83A59"
             },
             title: 'TODO App',
             headerTitleStyle: {
               textAlign: "center",
-              color:"#00b7c2"
+              color:"#fff"
             }
           }}
           >

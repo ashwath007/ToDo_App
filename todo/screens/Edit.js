@@ -84,23 +84,23 @@ useEffect(() => {
               Add TODO here
             </H1>
 
-            <Form>
-              <Item rounded style={styles.formItem}> 
+            <Form style={{padding:20}}>
+              <Item  style={styles.formItem}> 
                 <Input
                 value={name}
                 placeholder="Name of the task"
-                style={{color:'white'}}
+                style={{color:'black'}}
                 onChangeText={(text)=>{setname(text)}}
 
                 />
                  
               </Item>
-              <Item rounded style={styles.formItem}> 
+              <Item  style={styles.formItem}> 
               <Input
                 value={description}
                 onChangeText={(text)=>{setdescription(text)}}
                 placeholder="Description of the task"
-                style={{color:'white'}}
+                style={{color:'black'}}
                 />
               </Item>
                 <Button rounded block 
@@ -121,23 +121,26 @@ useEffect(() => {
 
 const styles = StyleSheet.create({
     emptyContainer: {
-      backgroundColor: '#1b262c',
+      backgroundColor: '#fff',
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
     },
     container: {
-      backgroundColor: '#1b262c',
+      backgroundColor: '#fff',
       flex: 1,
     },
     heading: {
       textAlign: 'center',
-      color: '#00b7c2',
+      color: '#000',
       marginVertical: 15,
       marginHorizontal: 5,
     },
     actionButton: {
       marginLeft: 5,
+    },
+    formItem:{
+      marginBottom:20
     },
     seasonName: {
       color: '#fdcb9e',
@@ -147,5 +150,6 @@ const styles = StyleSheet.create({
       marginLeft: 0,
       marginBottom: 20,
     },
+    
   });
 export default Edit;
