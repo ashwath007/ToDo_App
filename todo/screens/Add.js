@@ -1,44 +1,112 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
     Text,
-    StyleSheet
+    StyleSheet,
+    ScrollView
 } from 'react-native';
+import {
+  Container,
+  Form,
+  Item,
+  Input,
+  Button,
+  H1
+} from 'native-base'
+import AsyncStorage from '@react-native-community/async-storage';
+const shortid = require('shortid');
+const App = ({navigation, route}) => {
+
+  
+  const [name,setName] = useState('');
+  const [descrption,setDescrption] = useState('');
 
 
-const App = () => {
+  const addToList = async () => {
+    try{
+      if(!name && !descrption){
+        return alert('Plase provide name and descroption')
+      }
+      const addTodo = {
+        id:shortid.generate(),
+        name:name,
+        descrption:descrption,
+        isFinished:false
+      }
+
+      const storedValue = await AsyncStorage.getItem('@season_list')
+      const prevList = await JSON.parse(storedValue)
+
+      if(!prevList){
+        const newList = [addTodo]
+        await AsyncStorage.setItem('@season_list',JSON.stringify(newList))
+      }else{
+      prevList.push(addTodo)
+      await AsyncStorage.setItem('@season_list',JSON.stringify(prevList))
+
+      }
+      setName('')
+      setDescrption('')
+      navigation.navigate('Home')
+
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
     return (
-        <Text>
-            Add
-        </Text>
+        <Container style={styles.container}>
+            <ScrollView contentContainerStyle={{flexGrow:1}}>
+                <H1 style={styles.heading}>
+                  Add TODO here
+                </H1>
+
+                <Form>
+                  <Item rounded style={styles.formItem}> 
+                    <Input
+                    value={name}
+                    placeholder="Name of the task"
+                    style={{color:'white'}}
+                    onChangeText={(text)=>{setName(text)}}
+
+                    />
+                     
+                  </Item>
+                  <Item rounded style={styles.formItem}> 
+                  <Input
+                    value={descrption}
+                    onChangeText={(text)=>{setDescrption(text)}}
+                    placeholder="Description of the task"
+                    style={{color:'white'}}
+                    />
+                  </Item>
+                    <Button rounded block 
+                    onPress={addToList}
+                    >
+          <Text style={{color:'#fff'}}>
+            Save
+          </Text>
+                    </Button>
+                </Form>
+            </ScrollView>
+        </Container>
     )
 }
 const styles = StyleSheet.create({
-    emptyContainer: {
-      backgroundColor: '#1b262c',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    container: {
-      backgroundColor: '#1b262c',
-      flex: 1,
-    },
-    heading: {
-      textAlign: 'center',
-      color: '#00b7c2',
-      marginVertical: 15,
-      marginHorizontal: 5,
-    },
-    actionButton: {
-      marginLeft: 5,
-    },
-    seasonName: {
-      color: '#fdcb9e',
-      textAlign: 'justify',
-    },
-    listItem: {
-      marginLeft: 0,
-      marginBottom: 20,
-    },
+  container: {
+    backgroundColor: '#1b262c',
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  heading: {
+    textAlign: 'center',
+    color: '#00b7c2',
+    marginHorizontal: 5,
+    marginTop: 50,
+    marginBottom: 20,
+  },
+  formItem: {
+    marginBottom: 20,
+  },
   });
 export default App;

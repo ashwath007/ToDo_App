@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Text,
   StyleSheet
@@ -7,15 +7,27 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
+
+
+
 // bringing all screens
 import Home from './screens/Home'
 import Add from './screens/Add'
 import Edit from './screens/Edit'
 
+//storage
+
+
 const Stack = createStackNavigator();
 
 
+
+
+
 const App = () => {
+
+
   return (
   
       <NavigationContainer>
