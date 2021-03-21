@@ -131,15 +131,16 @@ const Home = ({navigation, route}) => {
                     <ListItem key={todo.id} style={styles.listItem}>
                     <Left>
     
-                      <Button style={styles.actionButton} danger
+                      <Button style={styles.actionButton} warning
                               onPress={()=>{deleteTodo(todo.id)}}
                       >
                         <Icon name='trash' active/>
                       </Button>
                       <Button style={styles.actionButton}
                             onPress={()=>navigation.navigate('Edit',{todo})}
+                            info
                       >
-                        <Icon name='edit' type="Feather" active/>
+                        <Icon name='edit-2' type="Feather" active/>
                       </Button>
                     </Left>
                       <Body>
@@ -152,7 +153,7 @@ const Home = ({navigation, route}) => {
                         </Text>
                       </Body>
                       <Right>
-                        <CheckBox checked={todo.isFinished}
+                        <CheckBox style={{padding:10}} checked={todo.isFinished}
                          onPress={()=>{markComplete(todo.id)}}
                         />
                       </Right>
@@ -198,6 +199,7 @@ const styles = StyleSheet.create({
     },
     actionButton: {
       marginLeft: 5,
+      borderRadius:20
     },
     ban:{
       flex: 1,
