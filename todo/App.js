@@ -37,7 +37,7 @@ const App = () => {
           component={Home}
           options={{
             headerStyle:{
-              backgroundColor: "#E83A59"
+              backgroundColor: "#5291B2"
             },
             title: 'TODO App',
             headerTitleStyle: {
@@ -53,7 +53,7 @@ const App = () => {
           component={Add}
           options={{
             headerStyle:{
-              backgroundColor: "#E83A59"
+              backgroundColor: "#5291B2"
             },
             title: 'TODO App',
             headerTitleStyle: {
@@ -69,7 +69,7 @@ const App = () => {
           component={Edit}
           options={{
             headerStyle:{
-              backgroundColor: "#E83A59"
+              backgroundColor: "#5291B2"
             },
             title: 'TODO App',
             headerTitleStyle: {

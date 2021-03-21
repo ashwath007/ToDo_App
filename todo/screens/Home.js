@@ -31,7 +31,7 @@ import {
     ScrollView
 } from 'react-native';
 
-import ban from './src/todo_ban.png'
+import ban from './src/todo.png'
 
 const Home = ({navigation, route}) => {
 
@@ -112,6 +112,7 @@ const Home = ({navigation, route}) => {
     }
     
     return (
+      <Container style={{backgroundColor:'#0C1925'}}>
         <ScrollView contentContainerStyle={styles.container}>
            {!todos || todos.length ==0 ? (
              
@@ -124,7 +125,7 @@ const Home = ({navigation, route}) => {
                 <H1 style={styles.heading}>
                   All Todos
                 </H1>
-                <List>
+                <List style={{padding:20}}> 
                  {todos.map((todo)=>{
                    return(
                     <ListItem key={todo.id} style={styles.listItem}>
@@ -142,7 +143,7 @@ const Home = ({navigation, route}) => {
                       </Button>
                     </Left>
                       <Body>
-                        <Title style={{color:'black'}}>
+                        <Title style={{color:'white'}}>
                          {todo.name}
                         </Title>
                         <Text note>
@@ -164,32 +165,36 @@ const Home = ({navigation, route}) => {
 
            }
 
-            <Fab style={{backgroundColor:'#E83A59'}}
-                position="bottomRight"
-                onPress={() => navigation.navigate('Add')}
-            > 
-          <Icon name='add'/>
-            </Fab>
+         
         </ScrollView>
+           <Fab style={{backgroundColor:'#5291B2'}}
+           position="bottomRight"
+           onPress={() => navigation.navigate('Add')}
+       > 
+     <Icon name='add'/>
+       </Fab>
+       </Container>
     )
 }
 const styles = StyleSheet.create({
     emptyContainer: {
-      backgroundColor: '#fff',
+      backgroundColor: '#0C1925',
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
     },
     container: {
-      backgroundColor: '#fff',
-      flex: 1,
+      backgroundColor: '#0C1925',
+    
       
     },
     heading: {
       textAlign: 'center',
-      color: '#000',
+      color: '#fff',
+      fontSize:18,
       marginVertical: 15,
       marginHorizontal: 5,
+      marginTop:12
     },
     actionButton: {
       marginLeft: 5,
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
       resizeMode: 'contain'
     },
     seasonName: {
-      color: '#fdcb9e',
+      color: '#fff',
       textAlign: 'justify',
     },
     listItem: {

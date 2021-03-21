@@ -56,7 +56,7 @@ const App = ({navigation, route}) => {
 
     return (
         <Container style={styles.container}>
-            <ScrollView contentContainerStyle={{flexGrow:1}}>
+            <ScrollView contentContainerStyle={{flexGrow:1}} style={{marginTop:53}}>
                 <H1 style={styles.heading}>
                   Add TODO here
                 </H1>
