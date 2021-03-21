@@ -13,6 +13,8 @@ import {
   H1
 } from 'native-base'
 import AsyncStorage from '@react-native-community/async-storage';
+
+// import SnackBar from 'Snack'
 const shortid = require('shortid');
 const App = ({navigation, route}) => {
 
@@ -46,6 +48,7 @@ const App = ({navigation, route}) => {
       }
       setName('')
       setDescrption('')
+
       navigation.navigate('Home')
 
     }

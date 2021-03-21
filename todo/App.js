@@ -39,7 +39,7 @@ const App = () => {
             headerStyle:{
               backgroundColor: "#5291B2"
             },
-            title: 'TODO App',
+            title: 'TODO',
             headerTitleStyle: {
               textAlign: "center",
               color:"#fff"
@@ -55,7 +55,7 @@ const App = () => {
             headerStyle:{
               backgroundColor: "#5291B2"
             },
-            title: 'TODO App',
+            title: 'TODO',
             headerTitleStyle: {
               textAlign: "center",
               color:"#fff"
@@ -71,7 +71,7 @@ const App = () => {
             headerStyle:{
               backgroundColor: "#5291B2"
             },
-            title: 'TODO App',
+            title: 'TODO',
             headerTitleStyle: {
               textAlign: "center",
               color:"#fff"

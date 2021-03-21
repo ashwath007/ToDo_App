@@ -134,7 +134,7 @@ const Home = ({navigation, route}) => {
                       <Button style={styles.actionButton} warning
                               onPress={()=>{deleteTodo(todo.id)}}
                       >
-                        <Icon name='trash' active/>
+                        <Icon name='x' type="Feather" active/>
                       </Button>
                       <Button style={styles.actionButton}
                             onPress={()=>navigation.navigate('Edit',{todo})}

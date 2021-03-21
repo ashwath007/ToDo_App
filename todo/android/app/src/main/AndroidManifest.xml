@@ -6,8 +6,8 @@
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/todo"
-      android:roundIcon="@mipmap/todo"
+      android:icon="@mipmap/logo_todo"
+      android:roundIcon="@mipmap/logo_todo"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <activity
